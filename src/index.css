@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer {
+  .container {
+    @apply mx-auto;
+  }
+}
+.contacts-page {
+  background-image: url(/public/assets/telephone-background.jpg);
+  background-size: cover;
+  background-position: center;
+}
