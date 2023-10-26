@@ -28,8 +28,8 @@ export const insertContacts = createAsyncThunk(
           "app-id": "64fc4a747b1786417e354f31",
         },
       });
-      const data = await res.json();
-      return data;
+      const resDate = await res.json();
+      return resDate;
     } catch (error) {
       console.log(error.message);
     }
