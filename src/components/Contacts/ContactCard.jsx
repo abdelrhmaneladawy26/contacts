@@ -1,10 +1,10 @@
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-const ContactCard = ({ title, image, firstName, lastName }) => {
+const ContactCard = ({ image, firstName, lastName }) => {
   return (
     <div className=" flex  justify-between items-center border-b-[2px] n text-[#fff] text-[20px] font-medium my-[20px]  py-[8px] ">
       <div className="flex items-center gap-[10px]">
-        <img src={image} alt={title} className=" rounded-full" />
+        <img src={image} className=" rounded-full" />
         <div className=" leading-[1.8]">
           <span> {firstName}</span> <span>{lastName}</span>
           <div>01032884845</div>
