@@ -4,7 +4,7 @@ import ContactsList from "./ContactsList";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getContacts } from "../../store/contactsSlice";
+import { getContacts, deleteContacts } from "../../store/contactsSlice";
 import { useState } from "react";
 const ContactsContainer = () => {
   const dispatch = useDispatch();
@@ -37,6 +37,8 @@ const ContactsContainer = () => {
           isLoading={isLoading}
           contactsData={contactsData.data}
           search={search}
+          deleteContacts={deleteContacts}
+          dispatch={dispatch}
         />
         <Pagination />
       </div>

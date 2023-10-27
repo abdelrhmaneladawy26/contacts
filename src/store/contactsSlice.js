@@ -16,6 +16,23 @@ export const getContacts = createAsyncThunk(
   }
 );
 
+export const deleteContacts = createAsyncThunk(
+  "contacts/deleteContacts",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await fetch(`https://dummyapi.io/data/v1/user/${id}`, {
+        method: "DELETE",
+        headers: { "app-id": "64fc4a747b1786417e354f31" },
+      });
+
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const insertContacts = createAsyncThunk(
   "contacts/insertContacts",
   async (data, thunkAPI) => {
@@ -62,6 +79,17 @@ const contactsSlice = createSlice({
       state.contacts.push(action.payload);
     },
     [insertContacts.rejected]: (state, action) => {
+      state.isLoading = false;
+    },
+
+    //DELETE CONTACT
+    [deleteContacts.pending]: (state, action) => {
+      state.isLoading = true;
+    },
+    [deleteContacts.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [deleteContacts.rejected]: (state, action) => {
       state.isLoading = false;
     },
   },

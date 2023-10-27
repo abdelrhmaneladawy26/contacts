@@ -1,10 +1,12 @@
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { insertContacts } from "../../store/contactsSlice";
 
 import img from "../../../public/assets/Ellipse.png";
+import { Link } from "react-router-dom";
 
 const AddContactForm = () => {
+  const data = useSelector((state) => state);
   const firstName = useRef(null);
   const lastName = useRef(null);
   const email = useRef(null);
@@ -18,7 +20,6 @@ const AddContactForm = () => {
     };
     dispatch(insertContacts(data));
   };
-
   return (
     <div className=" container bg-white w-full h-full  rounded-[25px] ">
       <div className="flex flex-col py-[70px] gap-[25px] items-center justify-center">
@@ -56,9 +57,11 @@ const AddContactForm = () => {
             placeholder="Email"
             className="border-[1px] p-3 rounded-[25px]"
           />
-          <button className="bg-[#D9D9D9] w-[100px]  md:w-[217px] h-[61px] rounded-[25px] ">
-            Cancel
-          </button>
+          <Link to="/">
+            <button className="bg-[#D9D9D9] w-[100px]  md:w-[217px] h-[61px] rounded-[25px] ">
+              Cancel
+            </button>
+          </Link>
           <button
             type="submit"
             className="bg-[#1BB0F0] text-white w-[100px] md:w-[217px] h-[61px] rounded-[25px] "

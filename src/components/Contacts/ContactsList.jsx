@@ -1,6 +1,12 @@
 import ContactCard from "./ContactCard";
 import Spinner from "../Utility/Spinner";
-const ContactsList = ({ isLoading, contactsData, search }) => {
+const ContactsList = ({
+  isLoading,
+  contactsData,
+  search,
+  deleteContacts,
+  dispatch,
+}) => {
   const data =
     contactsData &&
     contactsData
@@ -13,9 +19,12 @@ const ContactsList = ({ isLoading, contactsData, search }) => {
       .map((contact) => (
         <ContactCard
           key={contact.id}
+          id={contact.id}
           image={contact.picture}
           firstName={contact.firstName}
           lastName={contact.lastName}
+          deleteContacts={deleteContacts}
+          dispatch={dispatch}
         />
       ));
 
